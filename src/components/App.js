@@ -102,7 +102,7 @@ class App extends Component {
         </nav>
         <div className="container-fluid mt-5 text-center">
         <br></br>
-          <h1>Decentralized Bank</h1>
+          <h1>Welcome to dBank</h1>
           <h2>{this.state.account}</h2>
           <br></br>
           <div className="row">
@@ -111,56 +111,44 @@ class App extends Component {
               <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                 <Tab eventKey="deposit" title="Deposit">
                   <div>
-                    <br></br>
+                  <br></br>
                     How much do you want to deposit?
                     <br></br>
-                    (min. amount is 0.01ETH)
+                    (min. amount is 0.01 ETH)
                     <br></br>
-                    (one deposit is possibe at the time)
+                    (1 deposit is possible at the time)
                     <br></br>
                     <form onSubmit={(e) => {
-                      //先避免畫面重載
                       e.preventDefault()
                       let amount = this.depositAmount.value
-                      amount = Web3.utils.toWei(amount)
+                      amount = amount * 10**18 //convert to wei
                       this.deposit(amount)
                     }}>
                       <div className='form-group mr-sm-2'>
-                        <br></br>
+                      <br></br>
                         <input
                           id='depositAmount'
                           step="0.01"
                           type='number'
+                          ref={(input) => { this.depositAmount = input }}
                           className="form-control form-control-md"
                           placeholder='amount...'
-                          required
-                          ref={(input) => {this.depositAmount = input}}
-                        />
-                        </div><button type='submit' className='btn btn-primary'>Deposit</button>
+                          required />
+                      </div>
+                      <button type='submit' className='btn btn-primary'>DEPOSIT</button>
                     </form>
+
                   </div>
-                  </Tab>
+                </Tab>
                 <Tab eventKey="withdraw" title="Withdraw">
-                <div>
                   <br></br>
-                  How much do you want to withdraw?
-                </div>
-                <div>
-                  <button type='submit' className='btn btn-primary' onClick={(e) => this.withdraw(e)}>Withdraw</button>
-                </div>
-                </Tab> 
-                <Tab eventKey="account" title="balance">
-                  <br></br>
-                  Metamask balance
-                  <br></br>
-                  {Web3.utils.fromWei(this.state.balance.toString())}
-                  <br></br>
-                  Dbank balance
-                  <br></br>
-                  <button type='submit' className='btn btn-primary' onClick={(e) => this.nowDeposit(e)}>Check</button>
-                  <br></br>
-                  {this.nowDeposit()}
-                  <br></br>                </Tab>
+                    Do you want to withdraw + take interest?
+                    <br></br>
+                    <br></br>
+                  <div>
+                    <button type='submit' className='btn btn-primary' onClick={(e) => this.withdraw(e)}>WITHDRAW</button>
+                  </div>
+                </Tab>
               </Tabs>
               </div>
             </main>
