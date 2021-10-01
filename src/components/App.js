@@ -102,7 +102,7 @@ class App extends Component {
         </nav>
         <div className="container-fluid mt-5 text-center">
         <br></br>
-          <h1>Welcome to dBank</h1>
+          <h1>歡迎來到韭菜銀行！</h1>
           <h2>{this.state.account}</h2>
           <br></br>
           <div className="row">
@@ -112,11 +112,11 @@ class App extends Component {
                 <Tab eventKey="deposit" title="Deposit">
                   <div>
                   <br></br>
-                    How much do you want to deposit?
+                    你想要存多少錢？
                     <br></br>
-                    (min. amount is 0.01 ETH)
+                    (min. amount: 0.01 ETH)
                     <br></br>
-                    (1 deposit is possible at the time)
+                    (一次只能存一筆錢)
                     <br></br>
                     <form onSubmit={(e) => {
                       e.preventDefault()
@@ -142,7 +142,7 @@ class App extends Component {
                 </Tab>
                 <Tab eventKey="withdraw" title="Withdraw">
                   <br></br>
-                    Do you want to withdraw + take interest?
+                    你要取錢嗎？利息以Good Leek Coin發放。
                     <br></br>
                     <br></br>
                   <div>
